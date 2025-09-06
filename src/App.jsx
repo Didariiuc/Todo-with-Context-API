@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { TodoProvider } from "./Context"
+import TodoItem from "./Components/TodoItem"
 function App() {
   const [Todos, setTodos] = useState([])
 
@@ -25,7 +26,7 @@ function App() {
 
   useEffect(() => {
   const todos = JSON.parse(localStorage.getItem("todos"))
-  if(todos && todos.length() > 0) setTodos(Todos);
+  if(todos && todos.length > 0) setTodos(Todos);
   }, [])
   
   useEffect(() => {
@@ -43,6 +44,11 @@ function App() {
                     </div>
                     <div className="flex flex-wrap gap-y-3">
                         {/*Loop and Add TodoItem here */}
+                        {Todos.map((todo) => (
+                          <div key={todo.id}  className='w-full' >
+                            <TodoItem todo = {todo}/>
+                          </div>
+                        ))}
                     </div>
                 </div>
             </div>
