@@ -1,5 +1,5 @@
-import React from 'react'
-import { useTodo } from '../Context';
+import { useState } from 'react';
+import { useTodo } from '../Context/TodoContext';
 
 function TodoItem({ todo }) {
      const {updateTodo, deleteTodo, toggleComplete} = useTodo()
